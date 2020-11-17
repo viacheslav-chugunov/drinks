@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Toolbar" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorControlNormal">?attr/colorOnPrimary</item>
+        <item name="titleTextColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="CheckBox" parent="Base.Theme.AppCompat">
+        <item name="colorAccent">?attr/colorOnPrimary</item>
+        <item name="android:textColorSecondary">?attr/colorPrimary</item>
+    </style>
+
+</resources>
