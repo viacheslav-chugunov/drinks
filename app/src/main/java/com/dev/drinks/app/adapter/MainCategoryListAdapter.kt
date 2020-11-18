@@ -25,6 +25,9 @@ class MainCategoryListAdapter(
         holder.list.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = MainDetailListAdapter(context, item)
+            setHasFixedSize(true);
+            setItemViewCacheSize(20);
+            isDrawingCacheEnabled = true;
         }
     }
 

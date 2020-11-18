@@ -19,6 +19,9 @@ class MainListFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         recycler = inflater.inflate(R.layout.fragment_main_list, container, false) as RecyclerView
         recycler.layoutManager = LinearLayoutManager(context)
+        recycler.setHasFixedSize(true);
+        recycler.setItemViewCacheSize(20);
+        recycler.isDrawingCacheEnabled = true;
         return recycler
     }
 

@@ -26,9 +26,11 @@ class MainDetailListAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = drinks.get(position)
-        Picasso.with(context)
-            .load(item.imageUrl)
-            .into(holder.image)
+        item.imageUrl?.let {
+            Picasso.with(context)
+                .load(it.trim())
+                .into(holder.image)
+        }
         holder.name.text = item.name
     }
 
