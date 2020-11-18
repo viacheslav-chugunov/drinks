@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.ProgressBar
 import androidx.lifecycle.ViewModelProvider
 import com.dev.drinks.R
 import com.dev.drinks.app.extensions.bindToolbar
@@ -41,6 +43,12 @@ class MainActivity : AppCompatActivity() {
         viewModel.drinks.observe(this) {
             val drinks = viewModel.drinks.value ?: emptyList()
             list.updateAdapter(drinks)
+
+            if (!viewModel.isListLoaded) {
+                val progress = findViewById<ProgressBar>(R.id.progress_bar)
+                progress.visibility = View.GONE
+                viewModel.isListLoaded = true
+            }
         }
     }
 

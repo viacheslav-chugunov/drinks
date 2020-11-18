@@ -12,19 +12,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <androidx.core.widget.NestedScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
-        <fragment
-            android:id="@+id/list"
-            android:name="com.dev.drinks.app.presentation.main.MainListFragment"
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-    </androidx.core.widget.NestedScrollView>
+            <fragment
+                android:id="@+id/list"
+                android:name="com.dev.drinks.app.presentation.main.MainListFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+        </androidx.core.widget.NestedScrollView>
+
+    </FrameLayout>
 
 
 </LinearLayout>

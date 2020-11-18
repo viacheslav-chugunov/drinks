@@ -15,6 +15,7 @@ class MainViewModel : ViewModel() {
     val drinks = MutableLiveData<List<DrinkList>>()
     val categories = MutableLiveData<CategoryList>()
     var disabled = CategoryList.empty()
+    var isListLoaded = false
 
     fun getDisabledFromExtra(intent: Intent) {
         val property = MainActivity.Extra.DISABLED
