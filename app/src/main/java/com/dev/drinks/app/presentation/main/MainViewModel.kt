@@ -1,6 +1,7 @@
 package com.dev.drinks.app.presentation.main
 
 import android.content.Intent
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,7 +16,7 @@ class MainViewModel : ViewModel() {
     val drinks = MutableLiveData<List<DrinkList>>()
     val categories = MutableLiveData<CategoryList>()
     var disabled = CategoryList.empty()
-    var isListLoaded = false
+    var isListLoaded = MutableLiveData(false)
 
     fun getDisabledFromExtra(intent: Intent) {
         val property = MainActivity.Extra.DISABLED
@@ -39,6 +40,7 @@ class MainViewModel : ViewModel() {
                     .also { it.category = category }
             }
             drinks.postValue(toLoad)
+            isListLoaded.postValue(true)
         }
     }
 

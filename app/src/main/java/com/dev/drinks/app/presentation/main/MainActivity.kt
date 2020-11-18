@@ -35,6 +35,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeData() {
+        val progress = findViewById<ProgressBar>(R.id.progress_bar)
+        viewModel.isListLoaded.observe(this) {
+            if (it)
+                progress.visibility = View.GONE
+        }
+
         viewModel.categories.observe(this) {
             viewModel.loadDrinks()
         }
@@ -43,12 +49,6 @@ class MainActivity : AppCompatActivity() {
         viewModel.drinks.observe(this) {
             val drinks = viewModel.drinks.value ?: emptyList()
             list.updateAdapter(drinks)
-
-            if (!viewModel.isListLoaded) {
-                val progress = findViewById<ProgressBar>(R.id.progress_bar)
-                progress.visibility = View.GONE
-                viewModel.isListLoaded = true
-            }
         }
     }
 
