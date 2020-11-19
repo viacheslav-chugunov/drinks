@@ -6,6 +6,7 @@ import com.dev.drinks.domain.entity.DrinkList
 import com.dev.drinks.data.service.DrinksService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.Exception
 
 object DrinksApi {
 
@@ -25,11 +26,14 @@ object DrinksApi {
         retrofit.create(DrinksService::class.java)
     }
 
-    fun getDrinksByCategory(category: Category): DrinkList =
+    fun getDrinksByCategory(category: Category): DrinkList = try {
         service.getDrinkByCategory(category.toString()).execute().body() ?: DrinkList.empty()
+    } catch (e: Exception) { DrinkList.empty() }
 
-    fun getCategories() : CategoryList =
+
+    fun getCategories() : CategoryList = try {
         service.getDrinkCategories().execute().body() ?: CategoryList.empty()
+    } catch (e: Exception) { CategoryList.empty() }
 
     fun getCategories(disabled: CategoryList) : CategoryList =
         getCategories().apply { erase(disabled) }

@@ -1,6 +1,7 @@
 package com.dev.drinks.app.presentation.main
 
 import android.content.Intent
+import android.os.Handler
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
